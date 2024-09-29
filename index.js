@@ -12,6 +12,10 @@ databaseConnection();
 
 // Use the routes defined in routes.js
 application.use('/',setRoute())
+application.get("/test",function(req,res){
+    res.send("Hello from Rajveer")
+})
+
 
 
 httpServer.listen(port,function (){
