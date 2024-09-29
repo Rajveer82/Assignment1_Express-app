@@ -5,8 +5,10 @@ var application = express();
 var httpServer = http.createServer(application)
 
 var {setRoute} = require("./routes");
+var {databaseConnection} = require("./database");
 
-
+// Connect to the database
+databaseConnection();
 
 // Use the routes defined in routes.js
 application.use('/',setRoute())
