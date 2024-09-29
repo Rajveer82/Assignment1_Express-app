@@ -1,23 +1,17 @@
-//import express
-const express = require(`express`);
-const bodyParser = require(`body-parser`);
-const mongoose = require('mongoose');
+var port = process.env.PORT || 1234;
+var express = require('express');
+var http = require('http');
+var application = express();
+var httpServer = http.createServer(application)
 
-//Initialize the express app
-const app = express();
+var {setRoute} = require("./routes");
 
-//Middleware to parseJSON bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
 
-//Define a route
-app.get(`/`,(req,res)=>{
-    res.send(`Welcome to the first program of node js express`);
+
+// Use the routes defined in routes.js
+application.use('/',setRoute())
+
+
+httpServer.listen(port,function (){
+    console.log("Started on port:" + port);
 })
-//set the port
-const port = 3000;
-
-//start the server
-app.listen(port, ()=>{
-    console.log(`Server is running on http://localhost:${port}`)
-});
