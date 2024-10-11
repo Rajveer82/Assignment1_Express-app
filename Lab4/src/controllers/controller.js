@@ -15,13 +15,17 @@ exports.getMovies = async(req,res)=>{
         query.title = { $regex: title, $options: 'i' };//'i' makes it case-insesitive
         }
 
-// Add genre filter if provided
+// Add genre filter 
 if (genre) {
     query.genre = genre;
 }
 
+// Add year filter 
+if (year) {
+    query.year = parseInt(year);
+}
 
-
+//Fetch movies from the database based on the constructed query
         const movies = await Movie.find(query);
          res.status(200).json(movies);
     }
