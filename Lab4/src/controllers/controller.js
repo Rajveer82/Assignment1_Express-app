@@ -7,7 +7,19 @@ exports.getMovies = async(req,res)=>{
         //Extract query parameters from request
         const { title, genre, year } = req.query;
 
-        
+        // Initialize an empty query object
+        let query ={};
+
+        //Add a case-insensitive regex search for title if provided
+        if (title) {
+        query.title = { $regex: title, $options: 'i' };//'i' makes it case-insesitive
+        }
+
+// Add genre filter if provided
+if (genre) {
+    query.genre = genre;
+}
+
 
 
         const movies = await Movie.find(query);
