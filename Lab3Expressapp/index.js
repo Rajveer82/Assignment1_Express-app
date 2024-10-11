@@ -1,4 +1,6 @@
 //import express
+const dotenv = require(`dotenv`);
+dotenv.config({path:`./config.env`});
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const mongoose = require(`mongoose`); 
@@ -10,7 +12,7 @@ const app = express();
 
 
 //connect to mongoDb Atlas
-mongoose.connect(mongoURI)
+mongoose.connect("mongodb+srv://Rajveer:Rajjo123@cluster0.jdl76.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
  .then(()=>{
     console.log(`Connected to mongoDb`);
  })   
