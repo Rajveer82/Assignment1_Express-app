@@ -25,6 +25,7 @@ exports.getMovies = async(req,res)=>{
             query.year = parseInt(year); // Convert year to an integer
         }
 
+// Fetch movies from the database based on the constructed query
         const movies = await Movie.find();
          res.status(200).json(movies);
     }

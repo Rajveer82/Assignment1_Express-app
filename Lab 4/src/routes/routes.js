@@ -3,6 +3,9 @@ const router = express.Router();
 const movieController = require('../controllers/controller');
 const {validateMovie}=require('../middleware/middleware');
 
+//Route with search and filter
+router.get(`/, movieController.getMovies`);
+
 //Route to import movies
 router.post('/import',movieController.importMovies);
 
