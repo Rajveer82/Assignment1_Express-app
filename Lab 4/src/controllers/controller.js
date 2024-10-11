@@ -20,6 +20,11 @@ exports.getMovies = async(req,res)=>{
             query.genre = genre;
         }
 
+         // Add year filter  (ensure it's treated as a number)
+         if (year) {
+            query.year = parseInt(year); // Convert year to an integer
+        }
+
         const movies = await Movie.find();
          res.status(200).json(movies);
     }
