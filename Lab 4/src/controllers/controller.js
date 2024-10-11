@@ -7,6 +7,11 @@ exports.getMovies = async(req,res)=>{
     //Extract query parameters 
     const { title, genre, year } = req.query;
 
+    // Initialize empty query object
+    let query = {};
+    
+
+
         const movies = await Movie.find();
          res.status(200).json(movies);
     }
