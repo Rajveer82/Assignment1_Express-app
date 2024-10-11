@@ -3,7 +3,10 @@ const fs =require('fs');
 
 //Function to get all the files
 exports.getMovies = async(req,res)=>{
-    try{
+ try{
+    //Extract query parameters 
+    const { title, genre, year } = req.query;
+
         const movies = await Movie.find();
          res.status(200).json(movies);
     }
