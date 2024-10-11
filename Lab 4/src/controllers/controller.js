@@ -9,8 +9,16 @@ exports.getMovies = async(req,res)=>{
 
     // Initialize empty query object
     let query = {};
-    
 
+
+        // Add a case-insensitive regex search for title 
+        if (title) {
+            query.title = { $regex: title, $options: 'i' }; // 'i' makes it case-insensitive
+        }
+        // Add genre filter 
+        if (genre) {
+            query.genre = genre;
+        }
 
         const movies = await Movie.find();
          res.status(200).json(movies);
