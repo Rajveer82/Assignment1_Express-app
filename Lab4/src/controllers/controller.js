@@ -1,10 +1,16 @@
 const Movie = require('../models/Movies');
 const fs =require('fs');
 
-//Function to get all the files
+//Function to get all the movies with search and filter functionality
 exports.getMovies = async(req,res)=>{
     try{
-        const movies = await Movie.find();
+        //Extract query parameters from request
+        const { title, genre, year } = req.query;
+
+        
+
+
+        const movies = await Movie.find(query);
          res.status(200).json(movies);
     }
     catch(e){
