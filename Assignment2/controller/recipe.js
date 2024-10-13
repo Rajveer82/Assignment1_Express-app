@@ -15,49 +15,64 @@ var topRecipe = async function (req, res) {
         res.send(err) // Send the error if any occurs
     }
 }
+// Function to get the completes list of all recipes
 var getRecipeList = async function (req, res) {
     try {
+        // Find all recipes in the database
         const list = await Recipe.find()
+        // Send the list of recipes as the response
         res.send(list)
     } catch (err) {
+        // send the error message if any error occurs
         res.send(err)
     }
 }
+// Function to find a recipe by its Id
 var findRecipe = async function (req, res) {
     try {
+        // Find the recipe by the id provided in the request parameters
         const recipe = await Recipe.findById(req.params.id)
+
+        // Send the found recipe as the response
         res.send(recipe)
     } catch (err) {
+        // Send the error message if any error occurs
         res.send(err)
     }
 }
+// Function to add anew recipe to the database
 var addRecipe = async function (req, res) {
     try {
+        // Create a new recipe using the data from the request body
         const recipe = new Recipe(req.body)
-        await recipe.save()
-        res.send(recipe)
-    } catch (err) {
+        await recipe.save()    // Save the recipe to the database
+        res.send(recipe)       // Send the saved recipe as the response
+    } catch (err) {          // send the error message if any error occurs
         res.send(err);
     }
 }
+// Function to update an existing recipe by its ID
 var updateRecipe = async function (req, res) {
     try {
+        // Find recipe by its id and update it with the data from request body
         const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        res.send(recipe)
+        res.send(recipe)         // send the update recipe as the response
     }
-    catch (err) {
+    catch (err) {                  // send the error message if any error occurs
         res.send(err)
     }
 }
+// function to delete a recipe by its ID
 var deleteRecipe = async function (req, res) {
-    try {
+    try {                                         //find the recipe by its Id and delete it
         const recipe = await Recipe.findByIdAndDelete(req.params.id)
-        res.send(recipe)
+        res.send(recipe)          // Send the deleted recipe as the response
     }
-    catch (err) {
+    catch (err) {                // Send error message if any error occurs
         res.send(err)
     }
 }
+// Export all the functions 
 module.exports = {
     topRecipe,
     getRecipeList,

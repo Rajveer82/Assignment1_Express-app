@@ -2,7 +2,7 @@
 // Student name: Rajveer Kaur Gill
 // Student Id: 200546782
 // Date: 13 October 2024
- 
+
 //Import the user model
 var User = require("../models/User");
 
@@ -48,7 +48,7 @@ var logout = function (req, res) {
     // Send a success message for logging out
     res.send('User logged out');
 }
-// Export the functions for use in other parts of the
+// Export the functions for use in other parts of the application
 module.exports = {
     createUser,
     login,
