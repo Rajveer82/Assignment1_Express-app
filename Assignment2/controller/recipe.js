@@ -31,9 +31,19 @@ var findRecipe = async function (req, res) {
         res.send(err)
     }
 }
+var addRecipe = async function (req, res) {
+    try {
+        const recipe = new Recipe(req.body)
+        await recipe.save()
+        res.send("Recipe added")
+    } catch (err) {
+        res.send(err);
+    }
+}
 module.exports = {
     topRecipe,
     getRecipeList,
-    findRecipe
+    findRecipe,
+    addRecipe
 }
 
