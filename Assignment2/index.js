@@ -10,6 +10,8 @@ var httpServer = http.createServer(application)
 
 var {setRoute} = require("./routes");
 var {databaseConnection} = require("./database");
+// Middleware to parse the request body as JSON
+application.use(express.json());
 
 // Connect to the database
 databaseConnection();
