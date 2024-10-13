@@ -15,4 +15,15 @@ var topRecipe = async function (req, res){
         res.send(err) // Send the error if any occurs
     }
 }
-module.exports = {topRecipe}
+var getRecipeList = async function (req, res) {
+    try {
+        const list = await Recipe.find()
+        res.send(list)
+    } catch (err) {
+        res.send(err)
+    }
+}
+module.exports = {
+    topRecipe,
+    getRecipeList
+}
