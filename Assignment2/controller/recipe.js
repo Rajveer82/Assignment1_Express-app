@@ -40,10 +40,20 @@ var addRecipe = async function (req, res) {
         res.send(err);
     }
 }
+var updateRecipe = async function (req, res) {
+    try {
+        const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.send(recipe)
+    }
+    catch (err) {
+        res.send(err)
+    }
+}
 module.exports = {
     topRecipe,
     getRecipeList,
     findRecipe,
-    addRecipe
+    addRecipe,
+    updateRecipe
 }
 
