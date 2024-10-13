@@ -35,7 +35,7 @@ var addRecipe = async function (req, res) {
     try {
         const recipe = new Recipe(req.body)
         await recipe.save()
-        res.send("Recipe added")
+        res.send(recipe)
     } catch (err) {
         res.send(err);
     }
