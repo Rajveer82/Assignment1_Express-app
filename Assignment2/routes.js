@@ -8,18 +8,18 @@ var router = express.Router();
 const { createUser, login,logout } = require('./controller/user');
 // Set up the route
 var setRoute = function (){
-    router.get('/getTopRecipe', topRecipe)
-    router.get('/recipe/list', getRecipeList)
-    router.get('/recipe/find/:id', findRecipe)
-    router.post('/recipe/add', addRecipe)
-    router.put('/recipe/update/:id', updateRecipe)
-    router.delete('/recipe/delete/:id', deleteRecipe)
+    router.get('/getTopRecipe', topRecipe)   // Fetches the top recipe
+    router.get('/recipe/list', getRecipeList)  //Retrieves a list of all recipes
+    router.get('/recipe/find/:id', findRecipe)  // Finds a recipe by its ID
+    router.post('/recipe/add', addRecipe)    //Adds a new recipe
+    router.put('/recipe/update/:id', updateRecipe)     //Updates an existing recipe by Id
+    router.delete('/recipe/delete/:id', deleteRecipe)   // Deletes a recipe by id
 
     
     // user routes
-    router.post('/user/create', createUser)
-    router.post('/user/login', login)
-    router.get('/user/logout', logout)
+    router.post('/user/create', createUser)      //Creates a new user
+    router.post('/user/login', login)           //Logs in a user
+    router.get('/user/logout', logout)          //Logs out a user
     return router
 }
 module.exports = {setRoute}
