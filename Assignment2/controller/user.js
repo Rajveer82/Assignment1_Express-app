@@ -9,9 +9,19 @@ var createUser = async function (req, res) {
         res.send(err);
     }
 }
-var login = function (req, res) {
-    // login
-    res.send('User logged in');
+var login = async function (req, res) {
+    var username = req.body.username;
+var password = req.body.password;
+    try {
+        const user = await User.findOne({ username: username, password: password })
+        if (user) {
+            res.send('User logged in');
+        } else {
+            res.send('Invalid username or password');
+        }
+    } catch (err) {
+        res.send(err);
+    } 
 }
 var logout = function (req, res) {
     // logout
