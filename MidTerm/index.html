@@ -14,7 +14,12 @@
   <h2>Results:</h2>
   <pre id="results"></pre>
   <script>
-   
+   document.getElementById('getAllSongs').addEventListener('click', () => {
+      fetch('/songs')
+        .then(response => response.json())
+        .then(data => document.getElementById('results').textContent = JSON.stringify(data, null, 2))
+        .catch(error => console.error('Error:', error));
+    });
   </script>
 </body>
 </html>
