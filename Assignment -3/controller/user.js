@@ -33,7 +33,7 @@ var login = async function (req, res) {
 
         if (user) {
             // Generate a JWT token
-            const token = jwt.sign({ userId: user._id }, 'your_secret_key', { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id }, 'your_secret_key');
             res.send({ message: 'User logged in', token: token });
         } else {
             res.status(401).send('Invalid username or password');

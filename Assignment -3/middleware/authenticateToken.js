@@ -21,4 +21,10 @@ const authenticateToken = (req, res, next) => {
         if (err) {
             return res.status(403).json({ message: 'Invalid token' });
         }
-        // Store the decoded user ID in the request object f
+        // Store the decoded user ID in the request object for further use
+        req.userId = decoded.userId;
+        next();
+    });
+};
+
+module.exports = { authenticateToken };
