@@ -5,6 +5,8 @@
 
 //Import the user model
 var User = require("../models/User");
+var jwt = require('jsonwebtoken');
+
 
 // Function to create a new user
 var createUser = async function (req, res) {
@@ -20,28 +22,30 @@ var createUser = async function (req, res) {
         res.send(err);
     }
 }
-// Function to log in a user
-var login = async function (req, res) {
-    // Extract the username and password from the request body
-    var username = req.body.username;
-var password = req.body.password;
-    try {
-        // Find a user in the database that matches the provided username and password
-        const user = await User.findOne({ username: username, password: password })
 
-        // If a user is found, send a success message
+
+var login = async function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    try {
+        const user = await User.findOne({ username: username, password: password });
+
         if (user) {
-            res.send('User logged in');
-        }
-        // If no user is found, send an error message
-        else {
-            res.send('Invalid username or password');
+            // Generate a JWT token
+            const token = jwt.sign({ userId: user._id }, 'your_secret_key', { expiresIn: '1h' });
+            res.send({ message: 'User logged in', token: token });
+        } else {
+            res.status(401).send('Invalid username or password');
         }
     } catch (err) {
-        // If there is an error, send the error message
-        res.send(err);
-    } 
+        res.status(500).send(err);
+    }
 }
+
+
+
+
 
 // Function to log out a user
 var logout = function (req, res) {
