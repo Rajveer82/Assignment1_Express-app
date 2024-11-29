@@ -7,7 +7,7 @@ const serviceAccount = require("../fir-app-8e0ca-firebase-adminsdk-ck88g-e3f0a04
 if (!admin.apps.length) { // Prevent reinitialization
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://fir-app-8e0ca-default-rtdb.firebaseio.com", // Replace with your Firebase Realtime Database URL
+    databaseURL: "https://fir-app-8e0ca-default-rtdb.firebaseapp.com", // Replace with your Firebase Realtime Database URL
   });
 }
 
