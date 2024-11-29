@@ -1,13 +1,13 @@
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDC0HU1grETWOpFFnIsbdTZo6EWlO44Mu0",
-    authDomain: "week11app-64a55.firebaseapp.com",
-    databaseURL: "https://week11app-64a55-default-rtdb.firebaseio.com",
-    projectId: "week11app-64a55",
-    storageBucket: "week11app-64a55.firebasestorage.app",
-    messagingSenderId: "782975379361",
-    appId: "1:782975379361:web:4754f6800180bc57058de0",
-    measurementId: "G-CRRR7L4QPX"
+    apiKey: "AIzaSyDZIEY2qp2zoGcvyc1gf0wSF_teMby7Wp0",
+    authDomain: "fir-app-8e0ca.firebaseapp.com",
+    databaseURL: "https://fir-app-8e0ca-default-rtdb.firebaseapp.com",
+    projectId: "fir-app-8e0ca",
+    storageBucket: "fir-app-8e0ca.firebasestorage.app",
+    messagingSenderId: "1020285030807",
+    appId: "1:1020285030807:web:925b290a4630355380b4d2",
+    measurementId: "G-CJVC88459J"
   };
   
   // Initialize Firebase
