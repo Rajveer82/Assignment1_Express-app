@@ -41,8 +41,45 @@ const firebaseConfig = {
     } catch (error) {
       document.getElementById("signupMessage").innerText = error.message;
     }
-
-    //Add verified route
-    
   });
+// Handle Verified route Access
+
+document.getElementById("verifiedRouteForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+    // Get the current Firebase user
+    const user = firebase.auth().currentUser;
+
+    if (!user) {
+      throw new Error("User not logged in.");
+    }
+
+    // Get the user's token
+    const token = await user.getIdToken();
+
+    // Make a request to the backend verified route
+    const response = await fetch("http://localhost:3000/firebase/verified", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      document.getElementById("verifiedRouteMessage").innerText =
+        "Access granted: " + JSON.stringify(data);
+    } else {
+      throw new Error("Access denied. Unauthorized.");
+    }
+  } catch (error) {
+    document.getElementById("verifiedRouteMessage").innerText = error.message;
+  }
+});
+
+
+    
+
+  
   

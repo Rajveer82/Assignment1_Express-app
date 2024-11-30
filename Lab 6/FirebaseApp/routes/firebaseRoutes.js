@@ -11,7 +11,7 @@ router.post("/signin", signIn);
 
 // Add verified route
 
-router.get("/verified", verifyToken, (req, res)=> {
+router.post("/verified", verifyToken, (req, res)=> {
     res.status(200).json({
         message:"Access to the protected route granted.",
         user: req.user,
