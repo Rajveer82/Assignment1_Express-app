@@ -9,5 +9,14 @@ router.post("/signup", signUp);
 // Route for sign-in (get Firebase custom token)
 router.post("/signin", signIn);
 
+// Add verified route
+
+router.get("/verified", verifyToken, (req, res)=> {
+    res.status(200).json({
+        message:"Access to the protected route granted.",
+        user: req.user,
+    });
+});
+
 
 module.exports = router; // Export the router

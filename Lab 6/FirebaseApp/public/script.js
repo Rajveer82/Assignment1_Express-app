@@ -41,5 +41,8 @@ const firebaseConfig = {
     } catch (error) {
       document.getElementById("signupMessage").innerText = error.message;
     }
+
+    //Add verified route
+    
   });
   
